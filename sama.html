@@ -1,0 +1,55 @@
+<html>
+    <body>
+
+    <input type="text" name="" id="kata1">
+    <input type="text" name="" id="kata2">
+    <button id="submit">Olah</button><br/><br/>
+    <textarea>
+        
+    </textarea>
+        
+    <script type="text/javascript">
+        
+
+        document.getElementById('submit').addEventListener('click', () => {
+            const kata1 = document.getElementById('kata1').value;
+            const kata2 = document.getElementById('kata2').value;
+
+            document.querySelector('textarea').value = jumlahHurufSama(kata1, kata2);
+        })
+        const jumlahHurufSama = (kataisi1, kataisi2) => {
+            kataisi1 = kataisi1.toLowerCase()
+            kataisi2 = kataisi2.toLowerCase();
+            
+            const arrkata1  = kataisi1.split('');
+            const arrkata2 = kataisi2.split('');
+            
+            let hurufsama = [];
+            let object  = {};
+            let result = [];
+
+            for (let i = 0; i < arrkata1.length; i++) {
+                for (let a = 0; a < arrkata2.length; a++) {
+                    if (arrkata1[i] === arrkata2[a] && (arrkata1[i] !== ' ' && arrkata2[a] !== ' ' )) {
+                        hurufsama.push(arrkata1[i]);
+                    }
+                }
+            }
+            
+            hurufsama.forEach(function (item) {
+                if(!object[item])
+                    object[item] = 0;
+                    object[item] += 1;
+            })
+
+            for (let prop in object) {
+                if(object[prop] >= 2 || object[prop] == 1) {
+                    result.push(prop);
+                }
+            }
+            return result.length;
+        }
+        
+    </script>
+    </body>
+</html>
